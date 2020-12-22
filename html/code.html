@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IDAS</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+  </head>
+  <body>
+    <header>
+      <div class="code_header">
+        <a class="code_header_1">아두이노 코드</h1>
+      </div>
+    </header>
+    <a>
+      #include <SoftwareSerial.h>
+        <br><br>
+        SoftwareSerial BTSerial(2, 3);   
+        <br><br>
+        void setup() {<br>
+          &nbsp;&nbsp;Serial.begin(9600);<br>
+          &nbsp;&nbsp;BTSerial.begin(9600);<br>
+          &nbsp;&nbsp;pinMode(11, OUTPUT);<br>
+        }
+        <br><br>
+        void loop() {<br>
+          &nbsp;&nbsp;if (BTSerial.available()) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;char data = BTSerial.read();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Serial.write(data);<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;if(data == 'n'){<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(11, HIGH);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;} else if(data == 'f'){<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(11, LOW);<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;}
+          <br><br>
+          &nbsp;&nbsp;if (Serial.available())<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;BTSerial.write(Serial.read());<br>
+          }
+    </a>
+  </body>
+</html>
